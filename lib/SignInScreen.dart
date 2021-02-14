@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_app/Dashboard.dart';
 import 'package:flutter_app/SignUpScreen.dart';
 import 'package:flutter_app/ForgotPassword.dart';
 
@@ -88,7 +89,7 @@ class SignIn extends State<SignInScreen> {
               child: FlatButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => SignUpScreen()));
+                      MaterialPageRoute(builder: (context) => Dashboard()));
                 },
                 child: Text(
                   'Login',
