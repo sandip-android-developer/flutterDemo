@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -9,8 +8,12 @@ class SignUpScreen extends StatefulWidget {
 class _SignUp extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
-    TextEditingController nameController = TextEditingController();
+    TextEditingController firstNameController = TextEditingController();
+    TextEditingController lastNameController = TextEditingController();
+    TextEditingController emailController = TextEditingController();
+    TextEditingController mobileController = TextEditingController();
     TextEditingController passwordController = TextEditingController();
+
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(title: Text('Sign Up')),
@@ -27,52 +30,94 @@ class _SignUp extends State<SignUpScreen> {
               ),
             ),
             SizedBox(height: 30),
-            Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 20, vertical: 5.0),
-              child: TextField(
-                controller: nameController,
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'First Name',
-                    hintText: 'Enter First Name Here'),
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+              new Flexible(
+                flex: 1,
+                child: Padding(
+                  padding:
+                      EdgeInsets.only(left: 20.0, right: 10.0, bottom: 5.0),
+                  child: new TextField(
+                    controller: firstNameController,
+                    decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                            borderSide: BorderSide(width: 1)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                            borderSide: BorderSide(width: 1)),
+                        labelText: 'First Name',
+                        labelStyle: TextStyle(color: Colors.black54),
+                        hintText: 'Enter First Name Here'),
+                  ),
+                ),
               ),
-            ),
+              new Flexible(
+                flex: 1,
+                child: Padding(
+                  padding:
+                      EdgeInsets.only(left: 10.0, right: 20.0, bottom: 5.0),
+                  child: TextField(
+                    controller: lastNameController,
+                    decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                            borderSide: BorderSide(width: 1)),
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0),
+                            borderSide: BorderSide(width: 1)),
+                        labelText: 'Last Name',
+                        labelStyle: TextStyle(color: Colors.black54),
+                        hintText: 'Enter Last Name here'),
+                  ),
+                ),
+              ),
+            ]),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
               child: TextField(
-                controller: nameController,
+                controller: emailController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    labelText: 'Last Name',
-                    hintText: 'Enter Last Name here'),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
-              child: TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: BorderSide(width: 1)),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: BorderSide(width: 1)),
                     labelText: 'Email Id',
+                    labelStyle: TextStyle(color: Colors.black54),
                     hintText: 'Enter email id '),
               ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
               child: TextField(
+                controller: mobileController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: BorderSide(width: 1)),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: BorderSide(width: 1)),
                     labelText: 'Mobile No.',
+                    labelStyle: TextStyle(color: Colors.black54),
                     hintText: 'Enter Mobile No.'),
               ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 5.0),
               child: TextField(
+                controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: BorderSide(width: 1)),
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: BorderSide(width: 1)),
                     labelText: 'Password',
+                    labelStyle: TextStyle(color: Colors.black54),
                     hintText: 'Enter Password'),
               ),
             ),
@@ -93,13 +138,17 @@ class _SignUp extends State<SignUpScreen> {
             ),
             SizedBox(height: 50),
             GestureDetector(
-              onTap: () {},
-              child: Text.rich(TextSpan(text: 'Already registered?',
-                  style: TextStyle(fontSize: 16.0), children: [
-                TextSpan(
-                    text: 'Login',
-                    style: TextStyle(color: Colors.red, fontSize: 18.0))
-              ])),
+              onTap: () {
+                Navigator.pop(context);
+              },
+              child: Text.rich(TextSpan(
+                  text: 'Already registered?',
+                  style: TextStyle(fontSize: 16.0),
+                  children: [
+                    TextSpan(
+                        text: 'Login',
+                        style: TextStyle(color: Colors.red, fontSize: 18.0))
+                  ])),
             ),
             SizedBox(height: 50),
           ],

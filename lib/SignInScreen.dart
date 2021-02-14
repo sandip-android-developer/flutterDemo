@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/SignUpScreen.dart';
+import 'package:flutter_app/ForgotPassword.dart';
 
-class SignInScreen extends StatefulWidget{
+class SignInScreen extends StatefulWidget {
   @override
   SignIn createState() => SignIn();
 }
@@ -11,6 +12,8 @@ class SignIn extends State<SignInScreen> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+    TextEditingController emailController = TextEditingController();
+    TextEditingController passwordController = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(title: Text("Login demo")),
@@ -28,27 +31,49 @@ class SignIn extends State<SignInScreen> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15),
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: TextField(
+                controller: emailController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(/*borderRadius: BorderRadius.circular(20.0)*/),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide:
+                            BorderSide(width: 1 /*,color: Colors.red*/)),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: BorderSide(width: 1 /*, color: Colors.red*/),
+                    ),
+                    fillColor: Colors.white,
+                    filled: true,
                     labelText: 'Email',
+                    labelStyle: TextStyle(color: Colors.black54),
                     hintText: 'Enter valid email id as abc@gmail.com'),
               ),
             ),
             Padding(
-              padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
+              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
               child: TextField(
+                controller: passwordController,
                 obscureText: true,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide:
+                            BorderSide(width: 1 /*,color: Colors.red*/)),
+                    enabledBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8.0),
+                      borderSide: BorderSide(width: 1 /*, color: Colors.red*/),
+                    ),
+                    fillColor: Colors.white,
+                    filled: true,
                     labelText: 'Password',
+                    labelStyle: TextStyle(color: Colors.black54),
                     hintText: 'Enter Password'),
               ),
             ),
             FlatButton(
               onPressed: () {
-                //TODO FORGOT PASSWORD SCREEN GOES HERE
+                Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword()));
               },
               child: Text(
                 'Forgot password',
@@ -62,8 +87,8 @@ class SignIn extends State<SignInScreen> {
                   color: Colors.blue, borderRadius: BorderRadius.circular(20)),
               child: FlatButton(
                 onPressed: () {
-                  Navigator.push(
-                      context, MaterialPageRoute(builder: (_) => SignUpScreen()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => SignUpScreen()));
                 },
                 child: Text(
                   'Login',
@@ -74,15 +99,16 @@ class SignIn extends State<SignInScreen> {
             SizedBox(
               height: 130,
             ),
-            GestureDetector(onTap:(){
-             /* Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));*/
-
-            },
-              child: Text.rich(TextSpan(
-                  text: 'New User?',
-                  children: [TextSpan(text: 'SignUp',
-                      style: TextStyle(color: Colors.red)),]
-              )),)
+            GestureDetector(
+              onTap: () {
+                /* Navigator.push(context, MaterialPageRoute(builder: (context)=>SignUpScreen()));*/
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SignUpScreen()));
+              },
+              child: Text.rich(TextSpan(text: 'New User?', children: [
+                TextSpan(text: 'SignUp', style: TextStyle(color: Colors.red)),
+              ])),
+            )
           ],
         ),
       ),
