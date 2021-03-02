@@ -1,7 +1,9 @@
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/Dashboard.dart';
-import 'package:flutter_app/SignUpScreen.dart';
-import 'package:flutter_app/ForgotPassword.dart';
+import 'package:flutter_app/components/RoundButton.dart';
+import 'package:flutter_app/screens/ForgotPassword.dart';
+import 'package:flutter_app/screens/SignUpScreen.dart';
 
 class SignInScreen extends StatefulWidget {
   @override
@@ -74,14 +76,23 @@ class SignIn extends State<SignInScreen> {
             ),
             FlatButton(
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => ForgotPassword()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ForgotPassword()));
               },
               child: Text(
                 'Forgot password',
                 style: TextStyle(color: Colors.blue, fontSize: 15),
               ),
             ),
-            Container(
+            RoundButton(
+                text: "Login",
+                press: () {
+                  getLoginData();
+
+                  /*  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Dashboard()));*/
+                }),
+            /* Container(
               height: 50,
               width: 250,
               decoration: BoxDecoration(
@@ -96,7 +107,7 @@ class SignIn extends State<SignInScreen> {
                   style: TextStyle(color: Colors.white, fontSize: 25),
                 ),
               ),
-            ),
+            ),*/
             SizedBox(
               height: 130,
             ),
@@ -115,4 +126,29 @@ class SignIn extends State<SignInScreen> {
       ),
     );
   }
+}
+
+ getLoginData() async {
+  print("response-data--comming--");
+  // or new Dio with a BaseOptions instance.
+  /* BaseOptions options = new BaseOptions(
+    baseUrl: "https://www.xx.com/api",
+    connectTimeout: 5000,
+    receiveTimeout: 3000,
+  );*/
+  BaseOptions options = new BaseOptions(
+    baseUrl: "http://10.0.2.2:8000",
+    connectTimeout: 5000,
+    receiveTimeout: 3000,
+  );
+  Dio dio = new Dio(options);
+  var formData =
+      {"email": "s1@gmail.com", "password": "123456"};
+
+  Response response = await dio.post("/api/login", data: FormData.fromMap(formData));
+  if(response.statusCode==200)
+    {
+      
+    }
+  print("response-data--" + response.data.toString());
 }

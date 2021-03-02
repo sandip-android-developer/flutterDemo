@@ -1,9 +1,9 @@
-import 'dart:ui';
 
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/SignInScreen.dart';
-import 'package:flutter_app/SignUpScreen.dart';
+import 'package:flutter_app/screens/SignInScreen.dart';
+import 'package:flutter_app/screens/SignUpScreen.dart';
+import 'package:flutter_app/constants.dart';
 
 void main() => runApp(MyApp());
 
@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
     //final wordpad=WordPair.random();
     return MaterialApp(
       title: 'Word generator',
-      theme: ThemeData(primaryColor: Colors.white),
+      theme: ThemeData(primaryColor:kPrimaryColor,
+      scaffoldBackgroundColor: Colors.white),
       home: /*RandomWords()*/ SignInScreen(),
     );
   }
