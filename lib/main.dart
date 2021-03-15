@@ -1,9 +1,13 @@
-
+import 'package:flutter/widgets.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:async/async.dart';
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/screens/SignInScreen.dart';
 import 'package:flutter_app/screens/SignUpScreen.dart';
 import 'package:flutter_app/constants.dart';
+import 'package:flutter_app/screens/IntroScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -15,7 +19,7 @@ class MyApp extends StatelessWidget {
       title: 'Word generator',
       theme: ThemeData(primaryColor:kPrimaryColor,
       scaffoldBackgroundColor: Colors.white),
-      home: /*RandomWords()*/ SignInScreen(),
+      home: /*RandomWords()*/ IntroScreen(),
     );
   }
 }
