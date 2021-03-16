@@ -39,6 +39,7 @@ dependencies:
   retrofit: any
   logger: any
   introduction_screen: ^1.0.7
+  image_picker: ^0.6.6+5
 
 
 
